@@ -110,7 +110,7 @@
     "keywords": ["blog"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "219"
+    "wordCount": "268"
   }]
   </script>
 
@@ -869,7 +869,8 @@
     <li><a href="#6-本地调试">6. 本地调试</a></li>
     <li><a href="#7-生成静态页面">7. 生成静态页面</a></li>
     <li><a href="#8-使用github进行页面托管">8. 使用github进行页面托管</a></li>
-    <li><a href="#9-访问查看">9. 访问查看</a></li>
+    <li><a href="#9-自动化脚本">9. 自动化脚本</a></li>
+    <li><a href="#10-访问查看">10. 访问查看</a></li>
   </ul>
 </nav>
   </div>
@@ -896,7 +897,8 @@
     <li><a href="#6-本地调试">6. 本地调试</a></li>
     <li><a href="#7-生成静态页面">7. 生成静态页面</a></li>
     <li><a href="#8-使用github进行页面托管">8. 使用github进行页面托管</a></li>
-    <li><a href="#9-访问查看">9. 访问查看</a></li>
+    <li><a href="#9-自动化脚本">9. 自动化脚本</a></li>
+    <li><a href="#10-访问查看">10. 访问查看</a></li>
   </ul>
 </nav>
   </div>
@@ -1353,13 +1355,56 @@ git commit -m &#34;update site 快速搭建个人博客网站&#34;
 git push
 </code></pre>
 
-<h2 class="relative group">9. 访问查看 
-    <div id="9-%E8%AE%BF%E9%97%AE%E6%9F%A5%E7%9C%8B" class="anchor"></div>
+<h2 class="relative group">9. 自动化脚本 
+    <div id="9-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#9-%E8%AE%BF%E9%97%AE%E6%9F%A5%E7%9C%8B" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#9-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">### 部署到 github pages 脚本 ###</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 错误时终止脚本</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> -e
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除静态页面文件夹</span>
+</span></span><span class="line"><span class="cl">rm -rf public
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 重新生成静态页面</span>
+</span></span><span class="line"><span class="cl">hugo --baseURL<span class="o">=</span><span class="s2">&#34;https://coderdudu.github.io/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 复制静态页面到本地git仓库</span>
+</span></span><span class="line"><span class="cl">cp -r ./public/* ./coderdudu.github.io/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># git推送到github </span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ./coderdudu.github.io/
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># commit changes.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;update site `date`&#34;</span>
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></div><p>git终端可以在Windows上运行shell脚本：
+
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="./images/img-20241220172215.png" alt="Img" />
+      
+    </figure>
+</p>
+
+
+<h2 class="relative group">10. 访问查看 
+    <div id="10-%E8%AE%BF%E9%97%AE%E6%9F%A5%E7%9C%8B" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#10-%E8%AE%BF%E9%97%AE%E6%9F%A5%E7%9C%8B" aria-label="Anchor">#</a>
     </span>        
     
 </h2>

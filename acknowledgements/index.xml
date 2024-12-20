@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>嘟嘟解说</title>
+    <link>https://coderdudu.github.io/acknowledgements/</link>
+    <description>Recent content on 嘟嘟解说</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>md5-sha1@aliyun.com (嘟嘟解说)</managingEditor>
+    <webMaster>md5-sha1@aliyun.com (嘟嘟解说)</webMaster>
+    <copyright>&amp;copy; 2023 Coder A-DU. All Rights Reserved.</copyright>
+    <atom:link href="https://coderdudu.github.io/acknowledgements/index.xml" rel="self" type="application/rss+xml" />
+    
+  </channel>
+</rss>
